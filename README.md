@@ -1,6 +1,7 @@
 # nec_aurora_vector_machine
 
 # What is NEC?
+NEC Corporation (Nippon Denki Kabushiki-gaisha) is a Japanese multinational information technology and electronics company, headquartered in Minato, Tokyo.  The company was known as the Nippon Electric Company, Limited, before rebranding in 1983 as NEC. It provides IT and network solutions, including cloud computing, AI, IoT platform, and 5G network, to business enterprises, communications services providers and to government agencies, and has also been the biggest PC vendor in Japan since the 1980s, when it launched the PC-8000 series.
 
 # What are Vector Processors?
 
