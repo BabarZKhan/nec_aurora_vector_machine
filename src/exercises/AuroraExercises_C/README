@@ -1,0 +1,106 @@
+################################################################################
+#         _   ______________            ___   __  ______  ____  ____  ___      #
+#        / | / / ____/ ____/           /   | / / / / __ \/ __ \/ __ \/   |     #
+#       /  |/ / __/ / /      ______   / /| |/ / / / /_/ / / / / /_/ / /| |     #
+#      / /|  / /___/ /___   /_____/  / ___ / /_/ / _, _/ /_/ / _, _/ ___ |     #
+#     /_/ |_/_____/\____/           /_/  |_\____/_/ |_|\____/_/ |_/_/  |_|     #
+#                                                                              #
+################################################################################
+
+Welcome to the Aurora vector training of NEC.
+The training comprises 18 exercises with different vector optimization tasks with
+varying difficulty.
+Each folder contains a Makefile, a README, the source files for the exercise, 
+and an ftrace output of the standard solution.
+The Makefile lets you compile the exercise with some preset options 
+by simply typing "make".
+Detailed instructions for each exercise are given in the README.
+Follow the instructions and try to optimize the training examples such that you 
+reach a similar runtime and optimization level as given in the sample
+ftrace output we prepared for you in the file "solution.ftrace".
+In some cases, where intermediate steps are listed in the exercise README,
+several ftrace files are present corresponding to those steps.
+In other cases extended optimization techniques which can be seen as the
+optional finishing touch get an additional ftrace output.
+The timings in the solution.ftrace file were achieved on one vector engine
+of the type 10B utilizing the nfort compiler version 2.1.27.
+Each exercise will write out a few numerical results that can be used for result checking.
+
+Here you can find a list of all exercises
+
+01 - Operation Performance
+   Get to know the performance of different elementary operations and function on the Aurora.
+
+02 - Vector Memory Access Performance
+   Get to know the performance of different vector memroy access patterns on the Aurora.
+
+15 - Expensive Operations
+   Deal with a set of expensive operations and learn how to avoid them
+   or exploit the Auroras special operation pipes.
+
+04 - Simple Inhibitors
+   Learn which constructs and practices obstruct automated vectorization 
+   by the NEC compiler and how to circumvent them.
+
+05 - Collapsing
+   Optimize nested short loops to achieve better performance with the Aurora.
+
+06 - Loop Pushing
+   Restructuring of a loop of calls into a call of a loop to achieve
+   vectorization of frequently called subroutines.
+
+07 - Index Lists 1
+   Introduction to index lists, a technique to avoid unnecessary work
+   caused by mask operations .
+
+08 - Index Lists 2
+   Learn for which cases index lists are a useful option.
+
+09 - Index Lists 3
+   Replace index lists, which show patterns, by better performing techniques.
+
+10 - While Loop
+   How to rewrite a while loop such that it is vectorizable.
+
+11 - Inner K-Loop
+   Learn how this special case of nested loops can be restructured to achieve
+   better vectorization on the Aurora.
+
+12 - Search Loops
+   Rewrite loop structures and apply your knowledge from Exercise 06 
+   to optimize a vectorized search.
+
+13 - Loop Combination
+   Learn how a simple combination of two loops can reduce the amount of loads 
+   thus increase performance.
+
+14 - Unrolling
+   Learn how to instruct the compiler to unroll certain nested loop structures
+   to minimize load and store instructions.
+
+15 - Vector Registers
+   Make use of the Aurora vector registers to achieve even better performance
+   with recurring loads (High-end solution for exercise 13).
+
+16 - Small Block IO
+   Learn how to restructure code to cluster IO operations and improve performance.
+
+17 - Hyperplane Ordering
+   Learn the advantages and disadvantages of different approaches
+   to optimize memory access in case of memory access conflicts.
+
+18 - Short Loop Reduction
+   Learn how to work with short loop reductions efficiently.
+
+For every exercise the NEC team created standard solutions for you to compare.
+They are available in the forum as a separate Archive.
+Nevertheless we encourage you to try the exercises without knowledge of our
+solutions, as this will give you the best learning progress.
+
+
+The NEC team wishes you an informative an fun time with the exercises.
+If you encounter problems or bugs in the examples, please inform us 
+and fellow Aurora users via the NEC Aurora forum at https://www.hpc.nec/forums/ .
+
+Best,
+Your NEC team

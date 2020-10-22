@@ -1,0 +1,88 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include "dims.h"
+
+void add_term(int j, double* A, double C, double D, double* L);
+void add_C(double* A, double C);
+void add_D(double* A, double C, double* L);
+
+void do_loop(double* A, double* B, double* C, double* D, double* L,
+             int today) {
+
+  double tmp, tmp_old;
+  double const max_tmp = 1000000.0;
+  int idx;
+
+  for (int j=0; j<n; j++) {
+    for (int i=0; i<m; i++) {
+      idx = j*m+i;
+      switch (today) {
+        case (MONDAY):
+          tmp = B[idx]+2;
+          break;
+        case (TUESDAY):
+          tmp = B[idx]-2;
+          break;
+        case (WEDNESDAY):
+          tmp = ((double)(i+1))/((double)(j+1));
+          break;
+        case (THURSDAY):
+          tmp = (i+1)/(j+1)+1;
+          break;
+        case (FRIDAY):
+          tmp = ((double)(i+1))*((double)(j+1));
+          break;
+        case (SATURDAY):
+          tmp = 0.5*(double)((i+1)/(j+1));
+          break;
+        case (SUNDAY):
+          tmp = (i+1)/((double)(j+1+2));
+          break;
+      }
+
+      A[idx] += sqrt(fabs(tmp)+1) * exp(B[idx]);
+      tmp_old = tmp;
+
+      for (int k=0; k<o; k++) {
+        tmp += exp(B[idx] * L[k]);
+      }
+
+      if (tmp > max_tmp) {
+        printf("TMP greater MAX_TMP -> STOP\n");
+        exit(0);
+      }
+
+      A[idx] += tmp / sqrt(fabs(tmp_old)+1);
+
+      add_term(j, A+idx, C[i], D[i], L);
+
+    }
+  }
+
+}
+
+void add_term(int j, double* A, double C, double D, double* L) {
+
+  if (j >= 90) {
+    add_C(A, C);
+  } else if (j >= 0) {
+    add_D(A, D, L);
+  } else {
+    printf("A = 0.0 -> STOP\n");
+    exit(0);
+  }
+
+}
+
+void add_C(double* A, double C) {
+  *A += sqrt(C);
+}
+
+void add_D(double* A, double D, double* L) {
+  
+  for (int k=0; k<o; k++) {
+    *A += sqrt(D * L[k]);
+  }
+
+}

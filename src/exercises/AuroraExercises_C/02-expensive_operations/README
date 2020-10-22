@@ -1,0 +1,25 @@
++----------------------+
+| Expensive Operations |
++----------------------+
+
+Vectorization independent, certain operations are more expensive than others.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Go through all routines in vec.c from do_comp1 to do_comp7
+       and replace or rearrange the expensive operations to increase the performance.
+      
+       1. Recall the comparison from exercise 01 regarding the different costs of operations.
+       
+       2. The routine do_comp6 can be made even faster by precomputing
+          the sum of square roots.
+          However, while mathematically equivalent, due to change in the
+          order of operations, the numerical results differ slightly.
+          It is the programmers responsibility to decide whether or not
+          a change in numerics is worth the speedup in such cases.

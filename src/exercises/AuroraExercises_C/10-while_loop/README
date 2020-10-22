@@ -1,0 +1,46 @@
++-------------+
+| While Loops |
++-------------+
+
+Loops of which the number of cycles is unknown at the start of the loop
+(e.g. while loops) are an essential part of programming.
+Loops with an unknown length are not vectorizable.
+This limitation can be circumvented utilizing boolean masks or index lists.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check your ftrace output.
+       Note that the vector time and average vector length in the routine do_comp is zero,
+       due to the innermost loop being a while loop, which is not vectorizable.
+        
+       There are two general approaches to rewrite such a while loop.
+       First by utilizing a boolean mask and second an index list.
+
+       Rename the two calls in test.c to the routine do_comp into 
+       do_comp_boolmask and do_comp_idxlist.
+       Duplicate the routine do_comp in vec.c and rename each routine correspondingly.
+       
+
+       1. Boolean Mask:
+          Create and initialize a todo counter to m(or something above 0).
+          Replace the while loop with an if statement in which the calculation is done
+          and the counter todo is incremented.
+          Wrap everything in a while loop, which operates while there 
+          is still something to do.
+       2. Index List:
+          Create an initial index list containing the indices for which work needs to be done.
+          Replace the while loop with an if statement in which the calculation is done
+          and the index list is updated.
+          Wrap the computation loop into a while loop, which operates while,
+          the index list has more than 0 entries.
+          A collapsed index list can increase the performance slightly,
+          but is problematic with -fcheck=bound.
+
+       Check the performance of both approaches in the ftrace output.
+       Note that the performance of both methods is strongly dependent on the input data.

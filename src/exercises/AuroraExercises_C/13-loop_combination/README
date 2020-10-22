@@ -1,0 +1,21 @@
++------------------+
+| Loop Combination |
++------------------+
+
+Often successive loop structures work on the same set of data.
+This results in the same data beeing loaded over and over again
+and slowing down the computation.
+Combinination of loop structures reduces the number of requried loads
+thus improving performance.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Combine the two loops in the routine do_comp in the file vec.c into one loop.
+       Be careful with the iteration count, as both loops differ in this respect.
+       Split of the parts, which are only done in one loop.

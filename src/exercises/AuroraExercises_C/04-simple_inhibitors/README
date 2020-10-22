@@ -1,0 +1,28 @@
++-------------------+
+| Simple Inhibitors |
++-------------------+
+
+Vectorization of loops often results in huge performance increase. 
+Some operations prohibit automated vectorization and require a reformulation
+of the loop or additional compiler flags.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Compare your ftrace with the ftrace of the solution.
+       The ftrace file shows that for loop1-4 the 
+       vector operation ratio (V.OP RATIO), and
+       the average vector length are both zero.
+       Comparing the Vector time (always zero) with the exclusive time shows that 
+       the complete code was executed in scalar.
+       (This is the best measure in order to check for scalar code parts)
+       Check the test.L file to figure out why each of the loops could not be vectorized.
+       Rewrite each block, or change the compiler flags in the Makefile
+       The average vector length in loop5 looks fine, but can still be improved.
+       such that the compiler is able to vectorize it better.
+       

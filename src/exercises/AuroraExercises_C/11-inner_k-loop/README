@@ -1,0 +1,53 @@
++--------------+
+| Inner k-Loop |
++--------------+
+
+Inner k-loops are a common way to perform internal summations or other similar tasks.
+If the inner k-loop depends on the outer loops, straightforward vectorization is not possible.
+The approach to resolving this issue strongly depends on how
+the k-loop depends on the outer loops.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - This exercise mainly consists of three nested loops (see vec.c)
+       where the length of the innermost (k-loop) depends on i and j via the array L(i,j).
+       In the file test.c the routine do_comp is called six times.
+       Three times with the argument of L1 and three times with L2.
+       L1 and L2 contain two different data distributions.
+       For L1, all k-loops have a similar length, while for L2 some k-loops 
+       are significantly longer than others.
+       The string argument is only for the identification of the specific call in the ftrace.
+       This exercise is split into three tasks introducing a different
+       approach to inner k-loops each.
+
+       Rename the three calls of do_comp for L1 and L2 in test.c to 
+       do_comp_boolmask, do_comp_static_idxlist, and do_comp_dynamic_idxlist.
+       Duplicate the routine do_comp in vec.c twice and rename them accordingly.
+       Apply the following approaches to one of the three routines.
+
+       1. Boolean Mask:
+          Push the k-loop outside the i-loop and replace the while loop with an if condition.
+          Split the loop nests into two parts. The first one contains the ks
+          that are always executed, the second one the ks
+          that are only executed conditionally.
+
+       2. Static Index List:
+          Push the k-loop outside the i-loop.
+          Split the k-loop into two parts like above.
+          Build an index list in i for every required k.
+
+       3. Dynamic Index List:
+          Push the k-loop outside the i-loop.
+          Split the k-loop into two parts like above.
+          Build an index list for the first required value of k.
+          In each iteration rebuild the index list such that only entries are stored
+          where work needs to be done in iteration k+1.
+
+       Check the ftrace output to see, which approach to k-loops is a good choice
+       for which layout of k-loop bounds

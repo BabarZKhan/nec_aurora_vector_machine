@@ -1,0 +1,35 @@
++-----------+
+| Unrolling |
++-----------+
+
+Often data is read from or stored in memory in one outer iteration
+and is reused in the next outer iteration causing a lot of unnecessary memory traffic.
+One way to improve the reusage of loads and stores is the unrolling of loops.
+In this exercise the user can test how using compiler directives to unroll
+different types of loops affects the performance.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check for comp1 and comp2 in vec.c which outer loop unroll size is optimal.
+       Add the "!NEC$ outerloop_unroll( x )" compiler directive to the outer loops.
+       Test for different values of x how the performance is affected.
+       Often the compiler detects by itself that unrolling is benefical
+       and uses an unroll factor of 4. Very often unrolling with a higher factor is better,
+       but there are cases where the performance decreases again.
+       Therefore 4 is used as default. The user can still improve the performance
+       by testing higher levels of unrolling.
+   
+   3 - Comp3 in vec.c is separated into 5 ftrace regions, for which
+       loop types does unroll make sense?
+       Find the best outer loop unroll length.
+       
+   4 - In region "l-2" and "l-4" unrolling the outer k-loop does not work,
+       because inside of it are an i- and j-loop.
+       Change the loop order such that the k-loop can be unrolled.
+       What unroll size is best for region "l-2" and "l-4"?

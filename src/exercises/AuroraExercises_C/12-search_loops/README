@@ -1,0 +1,49 @@
++--------------+
+| Search Loops |
++--------------+
+
+Like while loops, the intrinsic scalar nature of search loops conflicts with vectorization.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check the ftrace output for the average vector length and vector operation ratio
+       for all three subroutines (do_comp_extensive,do_comp_indexlist,do_comp_boolmask),
+       which are quite poor, as the most inner loop (the shortest) is vectorized automatically.
+       
+       Optimize the search in all three subroutines in vec.c:
+
+       1. Extensive Search:
+          Rewrite the call of maxval(:,i,j) by an explicit search loop with counter k.
+          In this case it is faster to do the search for the maximum value
+          in the first dimension of A by hand and parallel in i.
+          Create an array of size m to store the maximum value.
+          Exchange the k and i loop.
+
+       2. Boolean Mask:
+          Promote k_s to a vector of size m and initialize it to zero.
+          Exchange the k and i loop but separate the actual computation from the search.
+          Remove the exit statement in the loop and wrap the if condition in another if
+          such that the check is only executed if k_s(i) was not set yet.
+
+       3. Index List:
+          Utilize an index list to perform the same operation as done in 2.
+          Promote k_s to a vector of size m and initialize it to zero.
+          Create an index list of size m and initialize it with the values 1 to m,
+          as the search needs to be done for every i
+          Exchange the k and i loop but separate the actual computation from the search.
+          Replace the i-loop by the index list loop.
+          If the search condition is true, save the index k,
+          else store the value of i in the index list for the next iteration.
+
+TODO: evtl 2D index liste?
+      evtl 2. Datensatz?
+
+       Note that although the boolean mask approach performs better than the index list,
+       it always depends on what is searched for in what data, how the different
+       algorithms perform on the Aurora.

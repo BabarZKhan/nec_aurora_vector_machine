@@ -1,0 +1,39 @@
++--------------+
+| Loop Pushing |
++--------------+
+
+Calls of subroutines and functions in loop structures can obstruct vectorization.
+A way to handle this problem is the so called "loop pushing" where the loops
+are "pushed" into the subroutine and function calls.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check your ftrace output.
+       Note that the vector time of the routine DO_LOOP
+       is roughly a fifth of the total time.
+       The average vector length is not long enough.
+       This is due to neither the i nor j loop beeing vectorizable.
+
+       Vectorize the DO_LOOP routine in vec.c as well as the called subroutines
+       utilizing loop pushing.
+       Follow these five steps to do so:
+       1. Promote the scalar variables to two-dimensional arrays of size (m,n).
+       2. Split the i and j loop into several i and j loops in order
+          to separate the non-vetorizable parts from the vectorizable parts.
+       3. Push the resulting loops into the case statement and into the add_term routine.
+       4. Eliminate the if statement in add_term.
+       5. Push the loops further to lower level.
+
+       You should obtain a compilable and correctly running version after every step.
+       The corresponding solution follows these steps and provides sources for each
+       intermediate step.
+
+       6. Note that your vector time is still not equal to the exclusive time.
+       Utilize the vec.L file to uncover more optimization potential and try to get 
+       vector time and exclusive time to be similar.

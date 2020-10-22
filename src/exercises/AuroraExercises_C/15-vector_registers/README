@@ -1,0 +1,36 @@
++------------------+
+| Vector Registers |
++------------------+
+
+As seen in the previous exercise, reusage of loads and stores can improve the
+overall performance.
+The Aurora compiler provides a compiler directive that places an array of maximum
+length 256 directly in an vector register (instead of allocating it in memory)
+an thereby eliminates repeated loads completely.
+
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+         
+   2 - Check the routines do_comp1 to do_comp4 in vec.c.
+       Try to minimize loads by utilizing the Auroras vector registers.
+       Use small steps:
+          1. Introduction of strip-mining loop
+          2. Replacement of repeated access by local variable of length 256
+          3. Introduction of vector register
+
+       1. Utilize, where possible, strip-mining and local arrays of length 256
+          in the routines do_comp1, do_comp2, do_comp3, do_comp4.
+          Note that in do_comp4 two vector registers can be used
+          to maximise performance.
+
+       2. Activate the usage of vector registers by usage of the compiler directive
+          !NEC$ vreg( X )
+          at the end of the declaration block, where x is the name of the variable,
+          which should be assigned to the vector registers.
+

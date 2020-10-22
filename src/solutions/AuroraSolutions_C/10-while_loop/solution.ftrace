@@ -1,0 +1,32 @@
+*----------------------*
+  FTRACE ANALYSIS LIST
+*----------------------*
+
+Execution Date : Tue Jul  2 08:12:04 2019 CEST
+Total CPU Time : 0:00'03"329 (3.329 sec.)
+Elapsed Time   : 0:00'03"332
+
+PMMR           : 0x0000000000001000
+PMCR0          : 0x0000000000000000
+
+VE Model       : 1
+Product Type   : 136
+Cores          : 8
+Core Clock     : 1400 MHz
+Base Clock     : 800 MHz
+Memory Clock   : 1600 MHz
+Memory Size    : 48 GB
+L1 I-Cache Size: 32 KB/core
+L1 D-Cache Size: 32 KB/core
+L2 Cache Size  : 256 KB/core
+L3 Cache Size  : 16 MB/VE
+
+
+FREQUENCY  EXCLUSIVE       AVER.TIME     MOPS   MFLOPS  V.OP  AVER.    VECTOR L1CACHE CPU PORT VLD LLC PROC.NAME  
+           TIME[sec](  % )    [msec]                    RATIO V.LEN      TIME    MISS     CONF HIT E.%            
+
+        1     3.319( 99.7)  3318.940  15339.4   5060.0  98.96 256.0     3.319   0.000    0.000    0.00 do_comp_boolmask
+        1     0.009(  0.3)     8.521   4987.9    984.5  98.69 256.0     0.009   0.000    0.000    0.00 do_comp_idxlist
+        1     0.002(  0.1)     1.788 141213.9  60976.1  99.65 256.0     0.002   0.000    0.000    0.01 main
+------------------------------------------------------------------------------------------------------------------
+        3     3.329(100.0)  1109.750  15380.5   5079.7  98.97 256.0     3.329   0.000    0.000    0.00 total

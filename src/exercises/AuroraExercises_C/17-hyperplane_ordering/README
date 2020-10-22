@@ -1,0 +1,38 @@
++---------------------+
+| Hyperplane Ordering |
++---------------------+
+
+Port conflict problems can be an obstacle to high performance on vector machines.
+A prominent example is transposing a matrix of a certain size.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora (Will roughly take 5min)
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check the ftrace output for the average vector length, the vector operation ratio, 
+       and the vector time in relation to the exclusive time of the TRANSPOSE_MAT routine.
+       They all should look satisfying. 
+       However, the number of port conflicts are unusually high.
+       
+       Try changing the matrix dimensionality to 1023, or 1025 and compare the timing.
+       This trivial approach of simply increasing the dimensionality of the matrix to arrive
+       at a non multiple of 256 might be troublesome if the rest of the code expects
+       a different size of the matrix.
+       
+       A different approach is the so called hyperplane ordering, 
+       where the vectorization of the matrix does not occur along rows or columns,
+       but along the skew-diagonals (secondary diagonals)
+       Rewrite the routine transpose_mat such that the most inner loop operates
+       on these skew diagonals.
+
+       Note that in a skew diagonal the sum of the indices is constant.
+       e.g.: m(1,4), m(2,3), m(3,2), m(4,1) are on a skew diagonal
+       and their index sum is always five.
+       In order to prevent usage of obscure loop boundaries, use two loops,
+       one for the upper left triangle, one for the lower right triangle.
+
+       

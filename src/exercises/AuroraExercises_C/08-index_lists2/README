@@ -1,0 +1,32 @@
++---------------+
+| Index Lists 2 |
++---------------+
+
+A common use of if-then-else structures in loops is to catch exceptions and write them out.
+This (usually not triggered) exceptions obstruct vectorization.
+Construction of an index list can help to take notes on when such an exception occurs
+and handle it later, thus enabling vectorization of the computation / check loop.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check your ftrace output.
+       Note that the vector time and average vector length in the routine do_comp is zero.
+       Check the vec.L file to find out what prohibits vectorization of the loop.
+
+       Utilize index lists to enable vectorization in the do_comp routine in vec.c,
+       by creating an index list for the rare case
+       (triggering a warning should be the exception).
+
+       Build two index list of length n*m for the i and j index
+       and store for which i,j a warning needs to be triggered.
+       Write the warning according to the index list in a scaler loop.
+       Invert the warning condition and use a boolean mask to perform the actual computation
+       in a nested loop structure.
+       Check the ftrace output. Your vector time and average vector length
+       should be much more pleasing

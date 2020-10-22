@@ -1,0 +1,53 @@
++-----------------+
+| Short Reduction |
++-----------------+
+
+Usage of reduction instructions, e.g. summation, can be
+a useful optimization of the compiler.
+However, if the reduction loop is much shorter than the CPU-internal vector register length
+(256 for Aurora) a reduction can cause overhead and decrease performance.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora (Will roughly take 5min)
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - The dimension over which the reduction is performed is of size o=100, 
+       and is passed as a variable to the subroutine do_comp in vec.c.
+       The ftrace output shows an average vector length of 80 
+       due to the usage of specialized reduction instructions via partial sums.
+
+       1. As a first countermeasure make use of the "shortloop" directive
+          to inform the compiler during compile time that the k-loop fits
+          into the vector-register length, and generation of partial sums is not necessary.
+          Although this reduces the average vector length to roughly 40,
+          the overall runtime is reduced by roughly a quarter.
+
+       2. Another way would be to break the reduction by interchanging the k and i loop.
+          This way every B of the innermost loop is different,
+          therefore no reduction has to be applied.
+          According to the vec.L file the compiler unrolls the k-loop.
+          The default unrolling length is four. 
+          Use the "outerloop_unroll" directive to find an unrolling
+          length better suited for this case.
+
+       3. For the compiler the work on a 2D array is harder to optimize than for a 1D array.
+          Store B(:,j) in temporary 1D arrays to do the summation with.
+          You need to adjust the unrolling length as it is very sensitive to changes.
+          Note that this is not faster than the solution of step 2.
+          But this is a good precursor step for the next one.
+
+       4. The vec.L file shows a high number of loads and stores,
+          which can be eliminated utilizing vector registers.
+          Assign s to the vector registers.
+          Utilize the shortloop directive for every i-loop 
+          and the novector directive for the k-loop to prevent the compiler
+          from messing up the vector register loop.
+          This routine is now only suited to work with n <= 256.
+          Try to generalize the usage of vector registers for larger n,
+          although it does not give a performance advantage in this case.
+
+       

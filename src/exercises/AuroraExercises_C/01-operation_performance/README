@@ -1,0 +1,21 @@
++-----------------------+
+| Operation Performance |
++-----------------------+
+
+Elementary operations and mathematical functions differ strongly in their execution time.
+This exercise's only purpose is to show the cost of a selected set of operations
+compared to other operations.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Read the ftrace file test.ftrace to get a hold of the different costs
+       of functions on the Aurora system.
+       Nothing to optimize here, but you may check a function or operation of you choice.
+       Remember to put it inside an ftrace region to be accurately measured.
+       

@@ -1,0 +1,29 @@
++-----------------+
+| Small Block I/0 |
++-----------------+
+
+I/O operations are always bottlenecks which should be avoided.
+However, even in unavoidable situations I/O can be written performance friendly.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora (Will roughly take 5min)
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - The code writes in vec.c an output-file 'output.txt' and later reads it.
+       In the context of this exercise
+       - test.c cannot be altered
+       - the terminal output and output file should not change due to optimization
+
+       Remove the computation from the routine do_write and put it into do_comp.
+       Create a temporary array in which to store the result of the computation
+       for every i, j, and k ind do_comp.
+       Modify do_write and do_read such that the arrays are not
+       read or written in small chunks.
+
+       If your system does not support computation of md5sums utilize `diff' 
+       to check whether or not the file output.txt changed due to the optimization.
+       

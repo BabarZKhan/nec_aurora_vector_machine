@@ -1,0 +1,22 @@
++--------------+
+| Index List 3 |
++--------------+
+
+While the use of index lists can improve performance, index lists always represent 
+indirect addressing and should only be used when necessary.
+In this exercise the task is to replace the used index lists, which contain specific
+patterns, with a direct addressing method.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Inspect the index lists in test.c.
+       Note that both of them are constructed using specific patterns.
+       Remove the unnecessary index lists from test.c and use a
+       direct addressing method in vec.c
+

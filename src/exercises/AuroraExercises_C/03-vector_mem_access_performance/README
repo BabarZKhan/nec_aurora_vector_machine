@@ -1,0 +1,21 @@
++----------------------------------+
+| Vector Memory Access Performance |
++----------------------------------+
+
+During compilation the compiler creates different vector instructions from your loops.
+This exercise's only purpose is to show for a selected set of loops what operations
+are generated and how they perform.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Read the ftrace file test.ftrace and test.L to get a hold of the different generated
+       instructions from the nfort compiler.
+       Nothing to optimize here, but you may check a loop construct of your choice.
+       Remember to put it inside an ftrace region to be accurately measured.
+       

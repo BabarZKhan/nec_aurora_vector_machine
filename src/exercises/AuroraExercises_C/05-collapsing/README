@@ -1,0 +1,36 @@
++------------+
+| Collapsing |
++------------+
+
+Vectorization is the parallel execution of a loop, thus a long loop means
+a large amount of parallel executions, i.e., a long vector length.
+The Aurora has a vector length of 256. So at least 256 elements are used
+in order to fill the vector pipes. In order to hide latencies
+caused by the preparation of vector instructions, even much longer loops are desired.
+With a loop length of 1024 a sufficient loop length is achieved.
+Sometimes it is possible to rewrite nested loops as one long loop.
+This method is known as loop collapsing and leads to longer vector lengths.
+
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check your ftrace output.
+       Note that your execution time for the routines SUB1-4
+       is roughly equal to the vector time.
+       However, the vector operation ratio is between 50% and 80% and the 
+       average vector length is 11, which is much smaller than the 256,
+       which would be optimal for the Aurora
+
+       Optimize loop execution in the file sub.c
+       for the four subroutines sub1-4 by collapsing (if possible)
+       the short nested loops into a longer one.
+
+       Try what happens after you finished collapsing, if you add -fcheck=bound
+       to the compiler flags in the Makefile, recompile, and run.
+       

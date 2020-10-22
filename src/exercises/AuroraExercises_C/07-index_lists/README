@@ -1,0 +1,42 @@
++-------------+
+| Index Lists |
++-------------+
+
+For many problems if-then-else structures are used inside of loops to treat
+array elements differently. Vectorization is possible by a mask operation,
+but the operations in the if/else case have to be evaluated for each data point,
+even if the if-statement operates only on a small subset of data points.
+In this cases usage of index lists can be advantageous.
+
+Task:
+   1 - Build and run
+       - Compile test with make
+       - Run on Aurora
+         time ./test.x
+       - Check ftrace 
+         ftrace -detail -f ftrace.out > test.ftrace
+
+   2 - Check your ftrace output.
+       Note that the average vector length in the routine do_comp is very poor.
+       In vec.c you can see that the if condition in the nested loop structure
+       is only executed in 1% of the cases (A contains uniform random numbers [0,maxi]). 
+
+       Utilize index lists to improve the performance in the do_comp routine in vec.c.
+       Do this in the following two steps:
+       1. Create an index list of length m only for the i index in every j iteration.         
+          This solution shows a worse performance as the index list creation
+          is very expensive compared to the gain in the vectorized computation
+       2. Build two index lists of length n*m for both i and j indices.
+       3. Equip the two index lists with the "save" attribute and compute them only once
+          (as A does not change).
+
+       You should obtain a compilable and correctly running version after every step.
+       The corresponding solution follows these steps and provides sources for each
+       intermediate step.
+
+       3. Your average vector length should be around 255 for the do_comp routine now.
+       The following optimization improves again the performance, but might be problematic 
+       when running the program with -fcheck=bounds or if a future fortran standard
+       does not require assumed shape arrays to be consecutive in memory.
+       Collapse the two loops into one which enables you to utilize 
+       one index lists of size n*m.
