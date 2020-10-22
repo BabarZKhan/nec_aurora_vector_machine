@@ -14,12 +14,12 @@
 | SX-3  (1990)               |  4            | Content Cell                       |                    |                  |                 |
 | SX-3R  (1992)              |               | Content Cell                       |                    |                  |                 |
 | SX-4  (1990)               |  32           | Content Cell                       |                    |                  |                 |
-| SX-5                       |  16           | Content Cell                       |                    |                  |                 |
+| SX-5  (1998)               |  16           | Content Cell                       |                    |                  |                 |
 | SX-6 (2001)                |   8           | Content Cell                       |                    |                  |                 |
-| SX-6i (2001)               |               | Content Cell                       |                    |                  |                 |
-| SX-7 (2002)                |               | Content Cell                       |                    |                  |                 |
+| SX-6i (2001)               |   1           | Content Cell                       |                    |                  |                 |
+| SX-7 (2002)                |   32          | Content Cell                       |                    |                  |                 |
 | SX-8i (2005)               |               | Content Cell                       |                    |                  |                 |
-| SX-8R (2006)               |               | Content Cell                       |                    |                  |                 |
-| SX-9 (2006)                |               | Content Cell                       |                    |                  |                 |
-| SX-ACE (2006)              |               | Content Cell                       |                    |                  |                 |
-| SX-Aurora TSUBASA (2018)   |               | Content Cell                       |                    |                  |                 |
+| SX-8R (2006)               |      8        | Content Cell                       |                    |                  |                 |
+| SX-9 (2006)                |      16       | Content Cell                       |                    |                  |                 |
+| SX-ACE (2006)              |      1        | Content Cell                       |                    |                  |                 |
+| SX-Aurora TSUBASA (2018)   |      8        | Content Cell                       |                    |                  |                 |
