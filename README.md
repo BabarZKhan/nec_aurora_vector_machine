@@ -26,3 +26,6 @@ NEC Corporation (Nippon Denki Kabushiki-gaisha) is a Japanese multinational info
 | SX-9 (2006)                |      16       |                        |                    |                  |                 |
 | SX-ACE (2006)              |      1        |                        |                    |                  |                 |
 | SX-Aurora TSUBASA (2018)   |      8        |                        |                    |                  |                 |
+
+
+# References
