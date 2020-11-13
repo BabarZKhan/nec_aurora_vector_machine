@@ -28,7 +28,7 @@ vectors of data that are common in multimedia and graphics applications. These a
 | SX-8R (2006)               |      8        |                        |                    |                  |                 |
 | SX-9 (2006)                |      16       |                        |                    |                  |                 |
 | SX-ACE (2006)              |      1        |                        |                    |                  |                 |
-| SX-Aurora TSUBASA (2018)   |      8        |                        |                    |                  |                 |
+| SX-Aurora TSUBASA (2018)   |      8        |       2450                 |          19600          |   8×48GB               |    8×1200             |
 
 
 # References
