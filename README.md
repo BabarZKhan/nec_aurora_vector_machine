@@ -22,7 +22,7 @@ vectors of data that are common in multimedia and graphics applications. These a
 | SX-4  (1990)               |  32           |          2              |                    |                  |                 |
 | SX-5  (1998)               |  16           |            8            |                    |                  |                 |
 | SX-6 (2001)                |   8           |       8                 |                    |                  |                 |
-| SX-6i (2001)               |   1           |                        |                    |                  |                 |
+| SX-6i (2001)               |   1           |                        |                    |                  |            8 GB     |
 | SX-7 (2002)                |   32          |    8.83                     |    282                |         256 GB         |         1129        | 35.3
 | SX-8i (2005)               |               |                        |                    |                  |    32 GB             |
 | SX-8R (2006)               |      8        |        35.2                |        281.6            |          256 GB        |     1129            | 35.3
