@@ -24,11 +24,11 @@ vectors of data that are common in multimedia and graphics applications. These a
 | SX-6 (2001)                |   8           |       8                 |                    |                  |                 |
 | SX-6i (2001)               |   1           |                        |                    |                  |                 |
 | SX-7 (2002)                |   32          |    8.83                     |                    |                  |                 |
-| SX-8i (2005)               |               |                        |                    |                  |                 |
-| SX-8R (2006)               |      8        |                        |                    |                  |                 |
-| SX-9 (2006)                |      16       |                        |                    |                  |                 |
-| SX-ACE (2006)              |      1        |                        |                    |                  |                 |
-| SX-Aurora TSUBASA (2018)   |      8        |       2450                 |          19600          |   8×48GB               |    8×1200             |
+| SX-8i (2005)               |               |                        |                    |                  |    32 GB             |
+| SX-8R (2006)               |      8        |        35.2                |        281.6            |          256 GB        |     1129            | 35.3
+| SX-9 (2007)                |      16       |          102.4              |           1638         |      1 TB            |   4096              | 256
+| SX-ACE (2013)              |      1        |         256               |     256               |        1 TB          |   256              | 256
+| SX-Aurora TSUBASA (2018)   |      8        |       2450                 |          19600          |   8×48GB               |    8×1200             | 1200
 
 
 # References
