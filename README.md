@@ -12,10 +12,10 @@ vectors of data that are common in multimedia and graphics applications. These a
 
 
 # NEC SX Architecture Family
-| System and Year            | MAX CPUs      | Peak CPU Double Precision GFLOPS   | Peak System GFLOPS |  Max Main Memory | Max Main Memory |  
-| -------------------------- | ------------- |----------------------------------- | ------------------ | ---------------- |---------------- |
-| SX-1E (1983)               |  1            |                        |                    |                  |                 | 
-| SX-1  (1983)               |  1            |                        |                    |                  |                 |
+| System and Year            | MAX CPUs      | Peak CPU Double Precision GFLOPS   | Peak System GFLOPS |  Max Main Memory | System Memory |  Memory B/W per CPU (GB/s)
+| -------------------------- | ------------- |----------------------------------- | ------------------ | ---------------- |---------------- |---------------- |
+| SX-1E (1983)               |  1            |                        |                    |                  |                 |            |
+| SX-1  (1983)               |  1            |                        |                    |                  |                 | |
 | SX-2  (1983)               |  1            |     1.3                   |                    |                  |                 |
 | SX-3  (1990)               |  4            |        5.5                |                    |                  |                 |
 | SX-3R  (1992)              |               |                        |                    |                  |                 |
