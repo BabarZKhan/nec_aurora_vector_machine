@@ -7,7 +7,7 @@ NEC Corporation (Nippon Denki Kabushiki-gaisha) is a Japanese multinational info
 
 # What are Vector Processors?
 A vector processor acts on several pieces of data with a single instruction. A superscalar processor issues several instructions at a time, each of which operates on one piece of data. Our MIPS pipelined processor is a scalar processor. Vector processors were popular for supercomputers in the 1980s and 1990s because they efficiently handled the long vectors of data common in scientific computations. Modern high-performance microprocessors are superscalar, because issuing several independent instructions is more flexible than processing vectors. However, modern processors also include hardware to handle short
-vectors of data that are common in multimedia and graphics applications. These are called \textbf{single instruction multiple data (SIMD)} units.
+vectors of data that are common in multimedia and graphics applications. These are called single instruction multiple data (SIMD) units.
 
 
 
@@ -32,3 +32,4 @@ vectors of data that are common in multimedia and graphics applications. These a
 
 
 # References
+1.  https://www.hpc.nec/forums/topic?id=p8kc9Z
